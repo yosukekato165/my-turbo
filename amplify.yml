@@ -1,0 +1,50 @@
+version: 1
+applications:
+  - appRoot: ./apps/signer
+    env:
+      variables:
+        key: value
+    frontend:
+      buildPath: / # Run install and build from the monorepo project root
+      phases:
+        preBuild:
+          commands:
+            - nvm install -s 18.13.0
+            - npm install -g pnpm
+        build:
+          commands:
+            - env | grep -e __NEXT_PRIVATE_PREBUNDLED_REACT >> .env.production
+            - npm run build
+      artifacts:
+        discard-paths: yes
+        baseDirectory: .next
+        files:
+          - '**/*'
+      cache:
+        paths:
+          - node_modules/**/*
+  - appRoot: ./apps/application
+    env:
+      variables:
+        key: value
+    frontend:
+      env:
+        variables:
+          key: value
+      phases:
+        preBuild:
+          commands:
+            - nvm install -s 18.13.0
+            - npm install -g pnpm
+        build:
+          commands:
+            - env | grep -e __NEXT_PRIVATE_PREBUNDLED_REACT >> .env.production
+            - npm run build
+      artifacts:
+        discard-paths: yes
+        baseDirectory: .next
+        files:
+          - '**/*'
+      cache:
+        paths:
+          - node_modules/**/*
