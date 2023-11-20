@@ -1,6 +1,6 @@
 version: 1
 applications:
-  - appRoot: ./apps/signer
+  - appRoot: app/web
     env:
       variables:
         key: value
@@ -10,7 +10,6 @@ applications:
         preBuild:
           commands:
             - nvm install -s 18.13.0
-            - npm install -g pnpm
         build:
           commands:
             - env | grep -e __NEXT_PRIVATE_PREBUNDLED_REACT >> .env.production
@@ -23,7 +22,7 @@ applications:
       cache:
         paths:
           - node_modules/**/*
-  - appRoot: ./apps/application
+  - appRoot: app/docs
     env:
       variables:
         key: value
@@ -35,7 +34,6 @@ applications:
         preBuild:
           commands:
             - nvm install -s 18.13.0
-            - npm install -g pnpm
         build:
           commands:
             - env | grep -e __NEXT_PRIVATE_PREBUNDLED_REACT >> .env.production
