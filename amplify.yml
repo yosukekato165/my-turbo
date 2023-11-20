@@ -5,10 +5,12 @@ applications:
       variables:
         key: value
     frontend:
+      buildPath: / # Run install and build from the monorepo project root
       phases:
         preBuild:
           commands:
             - nvm install -s 18.13.0
+            - npm install
         build:
           commands:
             - env | grep -e __NEXT_PRIVATE_PREBUNDLED_REACT >> .env.production
@@ -33,6 +35,7 @@ applications:
         preBuild:
           commands:
             - nvm install -s 18.13.0
+            - npm install
         build:
           commands:
             - env | grep -e __NEXT_PRIVATE_PREBUNDLED_REACT >> .env.production
