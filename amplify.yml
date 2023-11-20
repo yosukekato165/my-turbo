@@ -1,6 +1,6 @@
 version: 1
 applications:
-  - appRoot: app/web
+  - appRoot: apps/web
     env:
       variables:
         key: value
@@ -22,7 +22,7 @@ applications:
       cache:
         paths:
           - node_modules/**/*
-  - appRoot: app/docs
+  - appRoot: apps/docs
     env:
       variables:
         key: value
