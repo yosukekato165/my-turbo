@@ -5,7 +5,6 @@ applications:
       variables:
         key: value
     frontend:
-      buildPath: / # Run install and build from the monorepo project root
       phases:
         preBuild:
           commands:
