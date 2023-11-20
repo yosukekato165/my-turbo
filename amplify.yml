@@ -17,7 +17,7 @@ applications:
             - npm run build
       artifacts:
         discard-paths: yes
-        baseDirectory: .next
+        baseDirectory: apps/web/.next
         files:
           - '**/*'
       cache:
@@ -42,7 +42,7 @@ applications:
             - npm run build
       artifacts:
         discard-paths: yes
-        baseDirectory: .next
+        baseDirectory: apps/docs/.next
         files:
           - '**/*'
       cache:
